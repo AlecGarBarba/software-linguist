@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "bench": "npx ts-node binary_search.benchmark.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
     "@types/jest": "^29.5.6",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
 }

@@ -1,5 +1,5 @@
 export const binary_search = (arr: number[], expected: number): boolean => {
-  if (arr.length == 0) {
+  if (arr.length === 0) {
     return false;
   }
 
