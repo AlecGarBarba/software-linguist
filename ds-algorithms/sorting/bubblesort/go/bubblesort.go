@@ -1,6 +1,6 @@
 package bubblesort
 
-type orderFunction func(a int, b int) bool
+type OrderFunction func(a int, b int) bool
 
 func Ascending(a int, b int) bool {
 	return (a > b)
@@ -14,7 +14,7 @@ func Descending(a int, b int) bool {
 * Simple Bubblesort algorithm, takes an array of integers,
 * returns it ordered based on an orderFunction.
  */
-func BubbleSort(arr *[]int, should_order orderFunction) {
+func BubbleSort(arr *[]int, should_order OrderFunction) {
 
 	for i := 1; i < len(*arr); i++ {
 		for j := 0; j < len(*arr)-i; j++ {
