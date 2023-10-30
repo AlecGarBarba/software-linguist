@@ -16,8 +16,9 @@ func Descending(a int, b int) bool {
  */
 func BubbleSort(r_arr *[]int, should_order OrderFunction) {
 	arr := *r_arr
-	for i := 1; i < len(arr); i++ {
-		for j := 0; j < len(arr)-i; j++ {
+	array_length := len(arr)
+	for i := 1; i < array_length; i++ {
+		for j := 0; j < array_length-i; j++ {
 			if should_order(arr[j], arr[j+1]) {
 				arr[j], arr[j+1] = arr[j+1], arr[j]
 			}
