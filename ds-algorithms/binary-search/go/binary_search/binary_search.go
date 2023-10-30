@@ -1,19 +1,19 @@
 package binarysearch
 
-func Binarysearch(arr []uint32, search uint32) bool {
+func Binarysearch(arr *[]uint32, search uint32) bool {
 
-	if len(arr) == 0 {
+	high := len(*arr)
+
+	if high == 0 {
 		return false
 	}
 	low := 0
-
-	high := len(arr)
 
 	for low < high {
 
 		middle_point := low + (high-low)/2
 
-		value := arr[middle_point]
+		value := (*arr)[middle_point]
 
 		if value == search {
 			return true
