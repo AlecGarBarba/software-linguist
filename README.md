@@ -29,7 +29,10 @@ If you want to learn more about each specific languache, chekc the additional re
 
 ## Subjects
 
-- Data Structures and Algorithms (TODO: probably split this into different subjects)
+- Data Structures and Algorithms:
+  - Searching
+  - Sorting
+  - Traversing
 - CLI
 - Simple game
 - OOP Design Patterns
