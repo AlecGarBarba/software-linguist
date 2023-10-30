@@ -7,11 +7,13 @@ pub fn descending(a: i32, b: i32) -> bool {
 }
 
 pub fn bubblesort(arr: &mut [i32], should_order: fn(a: i32, b: i32) -> bool) -> () {
-    if arr.len() == 0 {
+    let array_len = arr.len();
+
+    if array_len == 0 {
         return ();
     }
-    for i in 1..=arr.len() - 1 {
-        for j in 0..=arr.len() - i - 1 {
+    for i in 1..=array_len - 1 {
+        for j in 0..=array_len - i - 1 {
             let curr = arr[j];
             let next = arr[j + 1];
             if should_order(curr, next) {

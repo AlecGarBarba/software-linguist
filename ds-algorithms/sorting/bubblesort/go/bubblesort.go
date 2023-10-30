@@ -19,8 +19,9 @@ func BubbleSort(r_arr *[]int, should_order OrderFunction) {
 	array_length := len(arr)
 	for i := 1; i < array_length; i++ {
 		for j := 0; j < array_length-i; j++ {
+			curr, next := arr[j], arr[j+1]
 			if should_order(arr[j], arr[j+1]) {
-				arr[j], arr[j+1] = arr[j+1], arr[j]
+				arr[j], arr[j+1] = next, curr
 			}
 		}
 	}
