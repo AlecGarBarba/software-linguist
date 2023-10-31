@@ -28,7 +28,7 @@ handle_options() {
 	  	 echo "Creating library for all languages!"
 		 (cd $go_dir; go mod init software-linguist.com/$(basename $(dirname $PWD)) )
 		 (cd $rust_dir; cargo init --lib )
-
+     (cd $ts_dir; pnpm init && pnpm i -D typescript ts-node ts-jest jest @types/jest && npx ts-jest config:init && touch index.ts && touch index.spec.ts)
         ;;
       -a | --application)
 		echo "Creating application for all languages!"
