@@ -6,6 +6,10 @@ pub fn descending(a: i32, b: i32) -> bool {
     a < b
 }
 
+/*
+* Simple Bubblesort algorithm, takes an array of integers,
+* returns it ordered based on an orderFunction.
+ */
 pub fn bubblesort(arr: &mut [i32], should_order: fn(a: i32, b: i32) -> bool) -> () {
     let array_len = arr.len();
 
