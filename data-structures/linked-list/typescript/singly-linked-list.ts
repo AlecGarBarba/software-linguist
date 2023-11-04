@@ -1,4 +1,5 @@
 import { NumberNode } from "./classes/number-single-node.class";
+import { isUndefined } from "./helpers/helper.functions";
 import { ILinkedList } from "./interfaces/linked-list.interface";
 
 export class SinglyLinkedList implements ILinkedList<number> {
@@ -15,12 +16,40 @@ export class SinglyLinkedList implements ILinkedList<number> {
     return this.len;
   }
   insertAt(item: number, index: number): void {
-    return;
+    if (index === 0) {
+      return this.prepend(item);
+    }
+    const newNode = new NumberNode(item);
+
+    /**
+     * if the index is larger than length, we cannot insert as the next value
+     * of our last node is undefined.
+     */
+    if (index > this.length) {
+      return;
+    }
+    let curr = this.head;
+
+    for (let i = 1; i < index; i++) {
+      // 1 - 0, 1
+      curr = curr!.next;
+    }
+
+    this.len++;
+    // if this is the last node
+    if (!curr?.next) {
+      curr!.next = newNode;
+      return;
+    }
+
+    newNode.next = curr.next;
+
+    curr.next = newNode;
   }
   remove(item: number): number | undefined {
     return;
   }
-  T;
+
   removeAt(index: number): number | undefined {
     return;
   }
@@ -33,7 +62,7 @@ export class SinglyLinkedList implements ILinkedList<number> {
     this.len++;
     const node = new NumberNode(item);
 
-    if (this.head === undefined) {
+    if (isUndefined(this.head)) {
       this.head = node;
       return;
     }
@@ -41,7 +70,7 @@ export class SinglyLinkedList implements ILinkedList<number> {
      * Otherwise, iterate to the end and add to the end
      */
 
-    let curr = this.head;
+    let curr = this.head as NumberNode;
 
     while (curr.next) {
       curr = curr.next;
@@ -56,7 +85,7 @@ export class SinglyLinkedList implements ILinkedList<number> {
   prepend(item: number): void {
     this.len++;
     const newNode = new NumberNode(item);
-    if (this.head === undefined) {
+    if (isUndefined(this.head)) {
       this.head = newNode;
       return;
     }
@@ -64,18 +93,32 @@ export class SinglyLinkedList implements ILinkedList<number> {
     this.head = newNode;
   }
   get(index: number): number | undefined {
-    let curr = this.head;
-    if (curr === undefined) {
+    if (isUndefined(this.head)) {
       return undefined;
     }
 
+    let curr: NumberNode | undefined = this.head as NumberNode;
     for (let i = 0; i < index; i++) {
-      curr = curr.next;
+      curr = curr?.next;
 
-      if (curr === undefined) {
+      if (isUndefined(curr)) {
         return undefined;
       }
     }
-    return curr.value;
+    return curr?.value;
+  }
+
+  /**
+   * debug helper func
+   */
+
+  printAll(): void {
+    let curr = this.head;
+    let values: string = "";
+    while (curr) {
+      values += curr.value + ", ";
+      curr = curr.next;
+    }
+    console.log(values);
   }
 }
