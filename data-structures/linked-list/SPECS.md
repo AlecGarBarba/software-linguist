@@ -16,7 +16,12 @@ interface LinkedList<T> {
 
 ```go
 
-type LinkedList interface{
- ...
+type ILinkedList[T interface{}] interface {
+	Length() uint
+	InsertAt(item T, index uint)
+	RemoveAt(index uint) (T, error)
+	Append(item T)
+	Prepend(item T)
+	Get(index uint) (T, error)
 }
 ```

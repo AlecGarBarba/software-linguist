@@ -26,7 +26,7 @@ handle_options() {
         ;;
       -l | --library)
 	  	 echo "Creating library for all languages!"
-		 (cd $go_dir; go mod init software-linguist.com/$(basename $(dirname $PWD)) )
+		 (cd $go_dir; go mod init software-linguist.com/$(basename $(dirname $PWD)) && go get github.com/stretchr/testify )
 		 (cd $rust_dir; cargo init --lib )
      (cd $ts_dir; pnpm init && pnpm i -D typescript ts-node ts-jest jest @types/jest && npx ts-jest config:init && touch index.ts && touch index.spec.ts)
         ;;
