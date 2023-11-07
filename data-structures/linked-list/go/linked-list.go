@@ -70,7 +70,7 @@ func (ll *SingleLinkedList[T]) Get(index int) (*T, error) {
 }
 
 func (ll *SingleLinkedList[T]) InsertAt(item T, index int) error {
-	if ll.Length() == 0 {
+	if ll.Length() == 0 && index == 0 {
 		ll.head = &Node[T]{value: item}
 		ll.len++
 		return nil

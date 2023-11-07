@@ -68,6 +68,18 @@ func TestSinglyLinkedListInsertAt(t *testing.T) {
 	assert.Equal(t, *tail, 6)
 }
 
+func TestSinglyLinkedListInsertAtHead(t *testing.T) {
+	sll := SingleLinkedList[int]{}
+
+	index_out_of_range_err := sll.InsertAt(10, 10)
+
+	assert.Error(t, index_out_of_range_err, "Should error on insertAt without head")
+
+	head_err := sll.InsertAt(0, 0)
+
+	assert.Nil(t, head_err, "Should be able to insert head")
+}
+
 func TestSinglyLinkedList(t *testing.T) {
 	values := []int{1, 2, 3, 4, 5}
 
